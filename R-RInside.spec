@@ -4,14 +4,13 @@
 #
 Name     : R-RInside
 Version  : 0.2.15
-Release  : 8
+Release  : 9
 URL      : https://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
 Summary  : C++ Classes to Embed R in C++ Applications
 Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-RInside-lib = %{version}-%{release}
-Requires: R-Rcpp
 BuildRequires : R-Rcpp
 BuildRequires : buildreq-R
 BuildRequires : buildreq-cmake
@@ -37,10 +36,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551929784
+export SOURCE_DATE_EPOCH=1552785441
 
 %install
-export SOURCE_DATE_EPOCH=1551929784
+export SOURCE_DATE_EPOCH=1552785441
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -76,8 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library RInside|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  RInside || :
 
 
 %files
@@ -190,13 +188,8 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/RInside/include/RInsideCommon.h
 /usr/lib64/R/library/RInside/include/RInsideConfig.h
 /usr/lib64/R/library/RInside/lib/libRInside.a
-/usr/lib64/R/library/RInside/libs/symbols.rds
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/RInside/lib/libRInside.so
 /usr/lib64/R/library/RInside/libs/RInside.so
-/usr/lib64/R/library/RInside/libs/RInside.so.avx2
-/usr/lib64/R/library/RInside/libs/RInside.so.avx512
-/usr/lib64/R/library/RInside/libs/libRInside.so.avx2
-/usr/lib64/R/library/RInside/libs/libRInside.so.avx512
