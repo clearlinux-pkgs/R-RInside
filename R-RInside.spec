@@ -4,7 +4,7 @@
 #
 Name     : R-RInside
 Version  : 0.2.15
-Release  : 10
+Release  : 11
 URL      : https://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
 Summary  : C++ Classes to Embed R in C++ Applications
@@ -36,10 +36,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552785441
+export SOURCE_DATE_EPOCH=1552963933
 
 %install
-export SOURCE_DATE_EPOCH=1552785441
+export SOURCE_DATE_EPOCH=1552963933
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
