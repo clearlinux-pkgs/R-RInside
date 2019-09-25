@@ -4,13 +4,14 @@
 #
 Name     : R-RInside
 Version  : 0.2.15
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
 Summary  : C++ Classes to Embed R in C++ Applications
 Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-RInside-lib = %{version}-%{release}
+Requires: R-Rcpp
 BuildRequires : R-Rcpp
 BuildRequires : buildreq-R
 BuildRequires : buildreq-cmake
@@ -18,7 +19,12 @@ BuildRequires : buildreq-qmake
 BuildRequires : openmpi
 
 %description
-## RInside [![Build Status](https://travis-ci.org/eddelbuettel/rinside.svg)](https://travis-ci.org/eddelbuettel/rinside) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/RInside)](https://cran.r-project.org/package=RInside) [![Dependencies](https://tinyverse.netlify.com/badge/RInside)](https://cran.r-project.org/package=RInside) [![Downloads](http://cranlogs.r-pkg.org/badges/RInside?color=brightgreen)](https://cran.r-project.org/package=RInside)
+A C++ class providing the R interpreter is offered by this package
+ making it easier to have "R inside" your C++ application. As R itself
+ is embedded into your application, a shared library build of R is
+ required. This works on Linux, OS X and even on Windows provided you
+ use the same tools used to build R itself. d Numerous examples are
+ provided in the eight subdirectories of the examples/ directory of
 
 %package lib
 Summary: lib components for the R-RInside package.
@@ -35,13 +41,13 @@ lib components for the R-RInside package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552963933
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569371361
 
 %install
-export SOURCE_DATE_EPOCH=1552963933
+export SOURCE_DATE_EPOCH=1569371361
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -70,12 +76,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  RInside || :
+R CMD check --no-manual --no-examples --no-codoc RInside || :
 
 
 %files
