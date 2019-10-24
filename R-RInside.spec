@@ -4,7 +4,7 @@
 #
 Name     : R-RInside
 Version  : 0.2.15
-Release  : 16
+Release  : 17
 URL      : https://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RInside_0.2.15.tar.gz
 Summary  : C++ Classes to Embed R in C++ Applications
@@ -17,14 +17,10 @@ BuildRequires : buildreq-R
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-qmake
 BuildRequires : openmpi
+BuildRequires : util-linux
 
 %description
-A C++ class providing the R interpreter is offered by this package
- making it easier to have "R inside" your C++ application. As R itself
- is embedded into your application, a shared library build of R is
- required. This works on Linux, OS X and even on Windows provided you
- use the same tools used to build R itself. d Numerous examples are
- provided in the eight subdirectories of the examples/ directory of
+## RInside [![Build Status](https://travis-ci.org/eddelbuettel/rinside.svg)](https://travis-ci.org/eddelbuettel/rinside) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/RInside)](https://cran.r-project.org/package=RInside) [![Dependencies](https://tinyverse.netlify.com/badge/RInside)](https://cran.r-project.org/package=RInside) [![Downloads](http://cranlogs.r-pkg.org/badges/RInside?color=brightgreen)](https://cran.r-project.org/package=RInside)
 
 %package lib
 Summary: lib components for the R-RInside package.
@@ -42,10 +38,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569371361
+export SOURCE_DATE_EPOCH=1571890712
 
 %install
-export SOURCE_DATE_EPOCH=1569371361
+export SOURCE_DATE_EPOCH=1571890712
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
