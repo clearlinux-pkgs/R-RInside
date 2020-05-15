@@ -4,10 +4,10 @@
 #
 Name     : R-RInside
 Version  : 0.2.16
-Release  : 21
+Release  : 22
 URL      : https://cran.r-project.org/src/contrib/RInside_0.2.16.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RInside_0.2.16.tar.gz
-Summary  : C++ Classes to Embed R in C++ Applications
+Summary  : C++ Classes to Embed R in C++ (and C) Applications
 Group    : Development/Tools
 License  : GPL-2.0+
 Requires: R-RInside-lib = %{version}-%{release}
@@ -19,13 +19,12 @@ BuildRequires : buildreq-qmake
 BuildRequires : openmpi
 
 %description
-## RInside: Easy embedding of R inside C++ (and C)
-[![Build Status](https://travis-ci.org/eddelbuettel/rinside.svg)](https://travis-ci.org/eddelbuettel/rinside)
-[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
-[![CRAN](http://www.r-pkg.org/badges/version/RInside)](https://cran.r-project.org/package=RInside)
-[![Dependencies](https://tinyverse.netlify.com/badge/RInside)](https://cran.r-project.org/package=RInside)
-[![Debian package](https://img.shields.io/debian/v/r-cran-rinside/sid?color=brightgreen)](https://packages.debian.org/sid/r-cran-rinside)
-[![Downloads](http://cranlogs.r-pkg.org/badges/RInside?color=brightgreen)](https://cran.r-project.org/package=RInside)
+A C++ class providing the R interpreter is offered by this package
+ making it easier to have "R inside" your C++ application. As R itself
+ is embedded into your application, a shared library build of R is
+ required. This works on Linux, OS X and even on Windows provided you
+ use the same tools used to build R itself. Numerous examples are
+ provided in the nine subdirectories of the examples/ directory of
 
 %package lib
 Summary: lib components for the R-RInside package.
@@ -37,21 +36,22 @@ lib components for the R-RInside package.
 
 %prep
 %setup -q -c -n RInside
+cd %{_builddir}/RInside
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584033813
+export SOURCE_DATE_EPOCH=1589524044
 
 %install
-export SOURCE_DATE_EPOCH=1584033813
+export SOURCE_DATE_EPOCH=1589524044
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
