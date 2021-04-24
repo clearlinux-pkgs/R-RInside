@@ -4,7 +4,7 @@
 #
 Name     : R-RInside
 Version  : 0.2.16
-Release  : 26
+Release  : 27
 URL      : https://cran.r-project.org/src/contrib/RInside_0.2.16.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RInside_0.2.16.tar.gz
 Summary  : C++ Classes to Embed R in C++ (and C) Applications
