@@ -4,7 +4,7 @@
 #
 Name     : R-RInside
 Version  : 0.2.18
-Release  : 43
+Release  : 44
 URL      : https://cran.r-project.org/src/contrib/RInside_0.2.18.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RInside_0.2.18.tar.gz
 Summary  : C++ Classes to Embed R in C++ (and C) Applications
@@ -17,9 +17,6 @@ BuildRequires : buildreq-R
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-qmake
 BuildRequires : openmpi
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 A C++ class providing the R interpreter is offered by this package
@@ -46,10 +43,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1675386916
+export SOURCE_DATE_EPOCH=1678836712
 
 %install
-export SOURCE_DATE_EPOCH=1675386916
+export SOURCE_DATE_EPOCH=1678836712
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
