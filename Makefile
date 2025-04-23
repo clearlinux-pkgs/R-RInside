@@ -1,5 +1,5 @@
 PKG_NAME := R-RInside
-URL = https://cran.r-project.org/src/contrib/RInside_0.2.18.tar.gz
+URL = https://ftp.osuosl.org/pub/cran/src/contrib/RInside_0.2.19.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
